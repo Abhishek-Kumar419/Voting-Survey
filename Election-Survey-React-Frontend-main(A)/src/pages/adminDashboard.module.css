@@ -1,0 +1,235 @@
+/* ── Shell ── */
+.shell {
+    display: flex;
+    min-height: 100vh;
+    background: #0b0b12;
+    color: #e2e2f0;
+    font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    background: #111120;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    transition: width 0.25s ease;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.sidebarOpen  { width: 230px; }
+.sidebarClosed { width: 64px; }
+
+.sidebarHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 14px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    min-height: 64px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;
+}
+
+.brandIcon { font-size: 22px; flex-shrink: 0; }
+
+.brandText {
+    font-size: 15px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    white-space: nowrap;
+}
+
+.toggleBtn {
+    background: rgba(255,255,255,0.06);
+    border: none;
+    color: #a0a0c0;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 11px;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+.toggleBtn:hover { background: rgba(255,255,255,0.12); }
+
+/* ── Nav ── */
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 8px;
+    flex: 1;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: #8888aa;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    transition: background 0.18s, color 0.18s;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.navItem:hover {
+    background: rgba(129,140,248,0.1);
+    color: #c4c4e0;
+}
+
+.navActive {
+    background: rgba(129,140,248,0.18) !important;
+    color: #a5b4fc !important;
+    font-weight: 600;
+}
+
+.navIcon { font-size: 18px; flex-shrink: 0; }
+.navLabel { overflow: hidden; }
+
+/* ── Sidebar Footer ── */
+.sidebarFooter {
+    padding: 14px 12px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.adminBadge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.adminAvatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #818cf8, #c084fc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.adminName {
+    font-size: 13px;
+    font-weight: 600;
+    color: #d0d0e8;
+}
+
+.adminRole {
+    font-size: 11px;
+    color: #6666aa;
+}
+
+/* ── Main ── */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* ── Topbar ── */
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    height: 64px;
+    background: #111120;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.pageTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pageTitle h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #e2e2f0;
+    margin: 0;
+}
+
+.topbarRight { display: flex; align-items: center; gap: 12px; }
+
+.statusPill {
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: rgba(34,197,94,0.12);
+    color: #4ade80;
+    border: 1px solid rgba(34,197,94,0.25);
+    font-weight: 500;
+}
+
+/* ── Content area ── */
+.content {
+    padding: 28px;
+    flex: 1;
+}
+
+/* ── Layout helpers ── */
+.grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.centerCol {
+    display: flex;
+    justify-content: center;
+}
+
+/* ── Card wrapper ── */
+.card {
+    background: #16162a;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    border-color: rgba(129,140,248,0.25);
+    box-shadow: 0 6px 32px rgba(129,140,248,0.08);
+}
+
+@media (max-width: 900px) {
+    .grid2 { grid-template-columns: 1fr; }
+}

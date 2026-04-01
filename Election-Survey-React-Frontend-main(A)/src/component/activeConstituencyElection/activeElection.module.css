@@ -1,0 +1,60 @@
+.container { width: 100%; }
+
+.container h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #a5b4fc;
+    margin: 0 0 20px;
+}
+
+.electionContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.electionCard {
+    background: #0f0f1e;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 20px;
+    width: 260px;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.electionCard:hover {
+    border-color: rgba(129,140,248,0.3);
+    transform: translateY(-3px);
+}
+
+.electionCard h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #e2e2f0;
+    margin: 0 0 10px;
+}
+
+.electionCard p {
+    font-size: 13px;
+    color: #8888aa;
+    margin: 5px 0;
+}
+
+.inactiveButton {
+    margin-top: 14px;
+    width: 100%;
+    padding: 10px;
+    background: rgba(239,68,68,0.15);
+    color: #f87171;
+    border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.inactiveButton:hover {
+    background: rgba(239,68,68,0.28);
+    transform: translateY(-1px);
+}
