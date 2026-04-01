@@ -12,7 +12,7 @@ function PartyCard() {
 
     const fetchParties = async () => {
         try {
-            const response = await axios.get("http://localhost:8090/api/party");
+            const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/party`);
             setParties(response.data);
         } catch (error) {
             console.error("Error fetching parties:", error);
@@ -21,7 +21,7 @@ function PartyCard() {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:8090/api/party/delete/${id}`);
+            await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/party/delete/${id}`);
 
             // Ensure UI updates correctly after deletion
             setParties(prevParties => prevParties.filter(party => party.id !== id));

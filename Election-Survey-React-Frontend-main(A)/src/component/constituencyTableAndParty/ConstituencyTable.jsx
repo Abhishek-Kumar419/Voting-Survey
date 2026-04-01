@@ -14,7 +14,7 @@ const ConstituencyTable = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get("http://localhost:8090/api/party");
+            const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/party`);
 
             // Grouping data by constituency ID
             const groupedData = response.data.reduce((acc, party) => {

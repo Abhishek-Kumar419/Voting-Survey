@@ -7,7 +7,7 @@ const GetAllConstituency = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:8090/api/constituency")
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/api/constituency`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch data");

@@ -27,7 +27,7 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:8090/api/users/register", { ...formData, hasVoted: false })
+        axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/users/register`, { ...formData, hasVoted: false })
             .then((response) => {
                 if (response.status === 201) {
                     toast.success("Voter registered successfully");

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./Login.module.css";
+import styles from "./login.module.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -26,8 +26,8 @@ const Login = () => {
                 : { voterId: formData.voterId, password: formData.password };
             
             const endpoint = isAdmin 
-                ? "http://localhost:8090/api/admin/auth" 
-                : "http://localhost:8090/api/users/login";
+                ? `${import.meta.env.VITE_API_BASE_URL}/api/admin/auth` 
+                : `${import.meta.env.VITE_API_BASE_URL}/api/users/login`;
             
             const response = await axios.post(endpoint, loginData);
             

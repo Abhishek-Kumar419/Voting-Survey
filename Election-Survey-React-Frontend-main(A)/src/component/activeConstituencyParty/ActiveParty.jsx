@@ -14,7 +14,7 @@ function ActiveParty() {
 
     const fetchActiveParties = async () => {
         try {
-            const response = await axios.get("http://localhost:8090/api/party/activeConstituenciePartys");
+            const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/party/activeConstituenciePartys`);
             setActiveParties(response.data);
             // toast.success("Live active constituency parties loaded successfully!");
         } catch (error) {

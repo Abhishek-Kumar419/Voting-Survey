@@ -24,7 +24,7 @@ const ConstituencyManager = () => {
 
     const fetchAll = async () => {
         try {
-            const res = await axios.get("http://localhost:8090/api/constituency");
+            const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/constituency`);
             setConstituencies(res.data);
         } catch {
             toast.error("Failed to load constituencies.");
@@ -39,7 +39,7 @@ const ConstituencyManager = () => {
         e.preventDefault();
         setSubmitting(true);
         try {
-            await axios.post("http://localhost:8090/api/constituency", {
+            await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/constituency`, {
                 ...formData,
                 electionActive: false,
                 dOLS: new Date().toISOString().split("T")[0]
@@ -58,7 +58,7 @@ const ConstituencyManager = () => {
         setTogglingId(c.id);
         try {
             const newStatus = !c.electionActive;
-            await axios.put(`http://localhost:8090/api/constituency/${c.id}/election-status/${newStatus}`);
+            await axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/constituency/${c.id}/election-status/${newStatus}`);
             toast.success(`Election ${newStatus ? "activated" : "deactivated"} for ${c.name}`);
             fetchAll();
         } catch {

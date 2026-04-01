@@ -20,13 +20,13 @@ function Profile() {
         }
 
         const fetchData = () => {
-            axios.get(`http://localhost:8090/api/users/voter/${voterId}`)
+            axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/users/voter/${voterId}`)
                 .then(response => {
                     setUser(response.data);
                     const name = response.data.constituencyName;
                     return Promise.all([
-                        axios.get(`http://localhost:8090/api/party/byConstituencyIdOrName?constituencyName=${encodeURIComponent(name)}`),
-                        axios.get(`http://localhost:8090/api/constituency/name/${encodeURIComponent(name)}`).catch(() => ({ data: null }))
+                        axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/party/byConstituencyIdOrName?constituencyName=${encodeURIComponent(name)}`),
+                        axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/constituency/name/${encodeURIComponent(name)}`).catch(() => ({ data: null }))
                     ]);
                 })
                 .then(([partiesRes, constituencyRes]) => {
@@ -56,8 +56,8 @@ function Profile() {
             const candidate = candidates.find(c => c.id === partyId);
             if (!candidate) return;
 
-            await axios.put(`http://localhost:8090/api/party/${partyId}/votes?votes=${candidate.numberOfVotes + 1}`);
-            await axios.put(`http://localhost:8090/api/users/vote/${user.voterId}`);
+            await axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/party/${partyId}/votes?votes=${candidate.numberOfVotes + 1}`);
+            await axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/users/vote/${user.voterId}`);
 
             // Update local candidate vote count immediately
             setCandidates(prev => prev.map(c =>

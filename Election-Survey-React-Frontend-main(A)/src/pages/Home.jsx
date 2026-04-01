@@ -13,7 +13,7 @@ const Home = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost:8090/api/party/activeConstituenciePartys");
+                const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/party/activeConstituenciePartys`);
 
                 if (response.data.length > 0) {
                     // Sorting parties in descending order based on votes

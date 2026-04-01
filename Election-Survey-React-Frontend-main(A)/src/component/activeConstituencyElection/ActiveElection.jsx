@@ -14,7 +14,7 @@ function ActiveElection() {
 
     const fetchActiveElections = async () => {
         try {
-            const response = await axios.get("http://localhost:8090/api/constituency/active");
+            const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/constituency/active`);
             setActiveElections(response.data);
         } catch (error) {
             console.error("Error fetching active elections:", error);
@@ -34,8 +34,8 @@ function ActiveElection() {
 
     const handleDeactivate = async (id) => {
         try {
-            await axios.put(`http://localhost:8090/api/constituency/${id}/election-status/false`);
-            await axios.put(`http://localhost:8090/api/party/resetVotes?constituencyId=${id}`);
+            await axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/constituency/${id}/election-status/false`);
+            await axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/party/resetVotes?constituencyId=${id}`);
             setActiveElections(prev => prev.filter(e => e.id !== id));
             toast.success("Election deactivated and votes reset!");
         } catch (error) {

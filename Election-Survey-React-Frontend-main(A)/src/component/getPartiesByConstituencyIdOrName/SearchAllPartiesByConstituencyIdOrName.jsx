@@ -8,7 +8,7 @@ function SearchAllPartiesByConstituencyIdOrName() {
     const [message, setMessage] = useState("");
 
     const fetchParties = async () => {
-        let url = "http://localhost:8090/api/party/byConstituencyIdOrName";
+        let url = `${import.meta.env.VITE_API_BASE_URL}/api/party/byConstituencyIdOrName`;
 
         if (constituencyId) {
             url += `?constituencyId=${constituencyId}`;

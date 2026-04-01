@@ -50,11 +50,11 @@ function LiveAgainElection() {
 
         try {
             // Reset votes (best-effort, don't block if no parties exist yet)
-            await axios.put(`http://localhost:8090/api/party/resetVotes?constituencyId=${constituencyNumber}`);
+            await axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/party/resetVotes?constituencyId=${constituencyNumber}`);
         } catch { /* ignore */ }
 
         try {
-            await axios.put(`http://localhost:8090/api/constituency/${constituencyNumber}/election-status/true`);
+            await axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/constituency/${constituencyNumber}/election-status/true`);
             toast.success(`Election is now Live for Constituency ${constituencyNumber}!`);
             setConstituencyNumber("");
         } catch (error) {
