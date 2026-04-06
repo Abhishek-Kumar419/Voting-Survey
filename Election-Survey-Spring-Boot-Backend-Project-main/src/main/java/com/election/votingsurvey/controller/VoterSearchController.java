@@ -86,13 +86,50 @@ public class VoterSearchController {
         return ResponseEntity.ok(response);
     }
 
+    // Search voters by constituency name
+    @GetMapping("/by-constituency")
+    public ResponseEntity<?> getVotersByConstituency(
+            @RequestParam String constituencyName,
+            @RequestParam(defaultValue = "100") int count) {
+
+        if (constituencyName == null || constituencyName.trim().length() < 2) {
+            return ResponseEntity.badRequest()
+                .body("Enter at least 2 characters of constituency name");
+        }
+
+        List<VoterRoll> voters = voterRollRepository
+            .findByConstituencyNameContainingIgnoreCase(
+                constituencyName.trim(),
+                PageRequest.of(0, Math.min(count, 100))
+            );
+
+        if (voters.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("No voters found for constituency: " + constituencyName);
+        }
+
+        List<Map<String, Object>> response = voters.stream().map(v -> {
+            Map<String, Object> map = new LinkedHashMap<>();
+            map.put("voterId", v.getVoterId());
+            map.put("name", v.getName());
+            map.put("dob", v.getDob());
+            map.put("gender", v.getGender());
+            map.put("constituencyName", v.getConstituencyName());
+            map.put("address", v.getAddress());
+            map.put("isRegistered", v.getIsRegistered());
+            return map;
+        }).toList();
+
+        return ResponseEntity.ok(response);
+    }
+
     // DEMO ONLY — Remove before real deployment
     @GetMapping("/demo-voters")
     public ResponseEntity<?> getDemoVoters(
             @RequestParam(defaultValue = "10") int count) {
 
         List<VoterRoll> sample = voterRollRepository
-            .findAll(PageRequest.of(0, Math.min(count, 20)))
+            .findAll(PageRequest.of(0, Math.min(count, 100)))
             .getContent();
 
         List<Map<String, Object>> result = sample.stream().map(v -> {

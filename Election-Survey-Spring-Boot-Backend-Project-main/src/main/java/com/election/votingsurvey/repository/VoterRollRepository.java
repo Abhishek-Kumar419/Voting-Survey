@@ -14,4 +14,6 @@ public interface VoterRollRepository extends JpaRepository<VoterRoll, Long> {
     List<VoterRoll> findByNameContainingIgnoreCaseAndDob(String name, String dob);
 
     Optional<VoterRoll> findByVoterIdAndDob(Long voterId, String dob);
+
+    List<VoterRoll> findByConstituencyNameContainingIgnoreCase(String constituencyName, org.springframework.data.domain.Pageable pageable);
 }
