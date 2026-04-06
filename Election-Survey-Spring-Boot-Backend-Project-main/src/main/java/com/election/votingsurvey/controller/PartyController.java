@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.election.votingsurvey.entity.Party;
 import com.election.votingsurvey.services.PartysService;
 
+import org.springframework.http.CacheControl;
 import org.springframework.http.ResponseEntity;
+
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping(value = "/api/party")
@@ -52,8 +55,11 @@ public class PartyController {
 	}
 
 	@GetMapping(value = "/allActiveElectionParties")
-	public List<Party> getActiveElectionPartiesController() {
-		return service.getActiveElectionParties();
+	public ResponseEntity<List<Party>> getActiveElectionPartiesController() {
+		List<Party> parties = service.getActiveElectionParties();
+		return ResponseEntity.ok()
+			.cacheControl(CacheControl.maxAge(5, TimeUnit.SECONDS))
+			.body(parties);
 	}
 
 	@DeleteMapping(value = "/delete/{Id}")
@@ -65,6 +71,17 @@ public class PartyController {
 	public ResponseEntity<String> updatePartyVotes(@PathVariable Long partyId, @RequestParam Long votes) {
 		boolean isUpdated = service.updateVotes(partyId, votes);
 		return isUpdated ? ResponseEntity.ok("Votes updated successfully.") : ResponseEntity.badRequest().body("Failed to update votes.");
+	}
+
+	@PutMapping("/{partyId}")
+	public ResponseEntity<?> updateParty(@PathVariable Long partyId, @RequestBody Party party) {
+		try {
+			party.setId(partyId);
+			Party updated = service.updateParty(party);
+			return ResponseEntity.ok(updated);
+		} catch (RuntimeException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
 	}
 
 	@GetMapping("/byConstituencyIdOrName")

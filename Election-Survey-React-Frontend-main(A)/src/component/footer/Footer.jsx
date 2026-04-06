@@ -1,34 +1,57 @@
-import styles from "./footer.module.css";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import styles from "./footer.module.css";
 
 function Footer() {
     return (
         <footer className={styles.footer}>
             <div className={styles.container}>
-                <div className={styles.section}>
-                    <h3>Voting Survey React Frontend</h3>
-                    <p>
-                        A user-friendly voting survey application built with <strong>React.js</strong> and <strong>Vite</strong>. 
-                        This platform enables users to participate in surveys, cast votes, and view real-time results with ease.
+
+                {/* Brand */}
+                <div className={styles.brand}>
+                    <div className={styles.brandName}>
+                        <span className={styles.pulse}></span>
+                        ElectPulse
+                    </div>
+                    <p className={styles.tagline}>
+                        Where every voice shapes the outcome. Real-time election surveys powered by transparent, secure, and instant vote tracking.
                     </p>
-                    <div className={styles.socialIcons}>
-                        <a href="Github link will bw here" target="_blank" rel="noopener noreferrer">
-                            <FontAwesomeIcon icon={faGithub} className={styles.icon} /> GitHub
-                        </a>
-                        <a href="Linkedin link will be here" target="_blank" rel="noopener noreferrer">
-                            <FontAwesomeIcon icon={faLinkedin} className={styles.icon} /> LinkedIn
-                        </a>
-                        <a href="Twitter link will be here" target="_blank" rel="noopener noreferrer">
-                            <FontAwesomeIcon icon={faTwitter} className={styles.icon} /> Twitter
-                        </a>
+                    <div className={styles.badges}>
+                        <span className={styles.badge}>🔒 Secure</span>
+                        <span className={styles.badge}>⚡ Real-time</span>
+                        <span className={styles.badge}>🇮🇳 Made for India</span>
                     </div>
                 </div>
+
+                {/* Quick Links */}
+                <div className={styles.linksSection}>
+                    <h4 className={styles.linksTitle}>Quick Links</h4>
+                    <ul className={styles.linksList}>
+                        <li><Link to="/">🏠 Home</Link></li>
+                        <li><Link to="/results">📊 Election Results</Link></li>
+                        <li><Link to="/news">📰 Election News</Link></li>
+                        <li><Link to="/find-voter-id">🔍 Find Voter ID</Link></li>
+                        <li><Link to="/register">📝 Register to Vote</Link></li>
+                        <li><Link to="/login">🔐 Login</Link></li>
+                    </ul>
+                </div>
+
+                {/* Features */}
+                <div className={styles.linksSection}>
+                    <h4 className={styles.linksTitle}>Features</h4>
+                    <ul className={styles.featureList}>
+                        <li>🔴 Live vote counting</li>
+                        <li>📊 Constituency-wise results</li>
+                        <li>🗳️ Voter turnout tracker</li>
+                        <li>🏆 Winner declaration</li>
+                        <li>📰 Dynamic election news</li>
+                        <li>🛡️ JWT secured voting</li>
+                    </ul>
+                </div>
+
             </div>
 
             <div className={styles.copyright}>
-                <p>© 2026 Voting Survey. All rights reserved. | PTU License</p>
+                <p>© 2026 ElectPulse &nbsp;|&nbsp; Built for democracy, powered by the people &nbsp;|&nbsp; 🇮🇳 India</p>
             </div>
         </footer>
     );

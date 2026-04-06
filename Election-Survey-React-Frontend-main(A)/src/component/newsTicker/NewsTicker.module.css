@@ -1,0 +1,51 @@
+.ticker {
+    width: 100%;
+    background: linear-gradient(90deg, #1a0000, #2d0000, #1a0000);
+    border-top: 2px solid #ff2222;
+    border-bottom: 2px solid #ff2222;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 38px;
+    position: sticky;
+    top: 68px;
+    z-index: 999;
+    box-shadow: 0 2px 16px rgba(255,34,34,0.25);
+}
+
+.liveTag {
+    background: #ff2222;
+    color: #fff;
+    font-weight: 800;
+    font-size: 11px;
+    padding: 4px 12px;
+    white-space: nowrap;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-right: 2px solid #ff4444;
+}
+
+.track {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.text {
+    display: inline-block;
+    animation: scroll 60s linear infinite;
+    color: #ffd700;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    padding-left: 24px;
+}
+
+@keyframes scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}

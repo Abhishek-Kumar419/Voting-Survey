@@ -8,6 +8,24 @@ const ConstituencyTable = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const fallbackPartyImages = {
+        "BJP": "https://tse2.mm.bing.net/th/id/OIP.53bSgHop7Rw7VMVwi2PU7gHaH6?pid=Api&P=0&h=180",
+        "INC": "https://tse2.mm.bing.net/th/id/OIP.7gBsmyboxHJsRCp6Yf0kpwHaE2?pid=Api&P=0&h=180",
+        "AAP": "https://tse3.mm.bing.net/th/id/OIP.WExtSFlcjlLts4SAE9SVcQHaFO?pid=Api&P=0&h=180",
+        "SAD": "https://tse3.mm.bing.net/th/id/OIP.-zgU1kJkApXOESdrlzBjoAHaE8?pid=Api&P=0&h=180",
+    };
+
+    const fallbackCandidateImages = {
+        "Narendra Modi": "https://media.assettype.com/sentinelassam-english/2026-01-26/w6nyejdk/Narendra-Modi.webp?w=1200&ar=40:21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100",
+        "Rahul Gandhi": "https://tse2.mm.bing.net/th/id/OIP.QJBtpk5ZwqsCSVBS6_S-uQHaEK?pid=Api&P=0&h=180",
+        "Arvind Kejriwal": "https://d2e1hu1ktur9ur.cloudfront.net/wp-content/uploads/2025/02/Arvind-Kejriwal-4.jpg",
+        "Sukhbir Badal": "https://tse4.mm.bing.net/th/id/OIP.jZycuWr34gEvfXTIMVsmnAHaEc?pid=Api&P=0&h=180",
+    };
+
+    const getPartyImage = (party) => party.img || fallbackPartyImages[party.name] || "/img/party.png";
+
+    const getCandidateImage = (party) => party.candidateImg || fallbackCandidateImages[party.candidateName] || "/img/user.png";
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -74,8 +92,8 @@ const ConstituencyTable = () => {
                                         <td>{party.name}</td>
                                         <td>{party.candidateName}</td>
                                         <td>{party.numberOfVotes}</td>
-                                        <td><img src={party.img} alt="Party Logo" className={styles.image} /></td>
-                                        <td><img src={party.candidateImg} alt="Candidate" className={styles.image} /></td>
+                                        <td><img src={getPartyImage(party)} alt="Party Logo" className={styles.image} onError={(e) => { e.target.onerror = null; e.target.src = "/img/party.png"; }} /></td>
+                                        <td><img src={getCandidateImage(party)} alt="Candidate" className={styles.image} onError={(e) => { e.target.onerror = null; e.target.src = "/img/user.png"; }} /></td>
                                     </tr>
                                 ))}
                             </tbody>

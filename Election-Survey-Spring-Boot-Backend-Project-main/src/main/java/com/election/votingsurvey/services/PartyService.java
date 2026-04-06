@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.election.votingsurvey.dao.PartysDao;
@@ -64,11 +66,13 @@ public class PartyService implements PartysService {
 
 
 	@Override
+	@Cacheable("activeParties")
 	public List<Party> getActiveElectionParties() {
 		return dao.getActiveElectionPartiesDao();
 	}
 
 	@Override
+	@CacheEvict(value = "activeParties", allEntries = true)
 	public boolean updateVotes(Long partyId, Long newVotes) {
 		 return dao.updateVotesDao(partyId, newVotes);
 	}
@@ -90,6 +94,33 @@ public class PartyService implements PartysService {
 		return updateStatus >0 ?  "All votes reset successfully." : "Error: No parties found in this constituency.";
 		
 	}
-	
-	
+
+	@Override
+	public Party updateParty(Party party) {
+		if (party == null || party.getId() <= 0) {
+			throw new RuntimeException("Party id must be provided for update.");
+		}
+
+		Optional<Party> existing = dao.getAllPartysDao().stream()
+				.filter(p -> p.getId() == party.getId())
+				.findFirst();
+
+		if (!existing.isPresent()) {
+			throw new RuntimeException("Party not found with id: " + party.getId());
+		}
+
+		Party updateParty = existing.get();
+		// You can decide which fields are updatable
+		updateParty.setName(party.getName());
+		updateParty.setCandidateName(party.getCandidateName());
+		updateParty.setNumberOfVotes(party.getNumberOfVotes());
+		updateParty.setImg(party.getImg());
+		updateParty.setCandidateImg(party.getCandidateImg());
+		if (party.getConstituency() != null && party.getConstituency().getId() != null) {
+			updateParty.setConstituency(party.getConstituency());
+		}
+
+		return dao.updatePartyDao(updateParty);
+	}
 }
+

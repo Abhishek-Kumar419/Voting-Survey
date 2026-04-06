@@ -66,21 +66,44 @@
     box-shadow: 0 0 0 3px rgba(108,99,255,0.15);
 }
 
-.inputGroup input[type="checkbox"] {
-    accent-color: #6c63ff;
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
+.adminCheck {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #1c1c28;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 12px 16px;
     cursor: pointer;
+    transition: border-color 0.2s;
 }
 
-.inputGroup label[for="adminCheck"] {
-    display: inline;
+.adminCheck:hover {
+    border-color: rgba(108,99,255,0.4);
+}
+
+.adminCheck input[type="checkbox"] {
+    accent-color: #6c63ff;
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.adminCheck label {
     font-size: 14px;
-    text-transform: none;
-    letter-spacing: 0;
+    font-weight: 600;
     color: #d1d5db;
     cursor: pointer;
+    text-transform: none;
+    letter-spacing: 0;
+    margin: 0;
+    flex: 1;
+}
+
+.adminCheck .adminIcon {
+    font-size: 18px;
+    margin-left: auto;
 }
 
 @keyframes fadeUp {

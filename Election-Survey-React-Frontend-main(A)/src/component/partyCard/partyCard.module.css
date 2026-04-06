@@ -84,6 +84,21 @@
     display: block;
 }
 
+.cardActions { display: flex; gap: 8px; justify-content: center; margin-top: 8px; }
+
+.editButton {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid rgba(59,130,246,0.4);
+    background: rgba(59,130,246,0.15);
+    border-radius: 8px;
+    color: #93c5fd;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.editButton:hover { background: rgba(59,130,246,0.2); }
+
 .deleteButton {
     margin-top: 12px;
     width: 100%;
@@ -99,3 +114,53 @@
 }
 
 .deleteButton:hover { background: rgba(239,68,68,0.25); }
+
+.editPanel {
+    margin-bottom: 18px;
+    padding: 14px;
+    border: 1px solid rgba(165,180,252,0.4);
+    border-radius: 12px;
+    background: #101129;
+}
+
+.editPanel h2 {
+    margin: 0 0 8px;
+    color: #bfdbfe;
+    font-size: 16px;
+}
+
+.editPanel label {
+    display: block;
+    margin-bottom: 8px;
+    color: #cbd5e1;
+    font-size: 13px;
+}
+
+.editPanel input {
+    width: 100%;
+    padding: 7px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(148,163,184,0.4);
+    background: #0f172a;
+    color: #e2e8f0;
+    margin-top: 4px;
+}
+
+.editButtons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.editButtons button {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.editButtons button:first-child { background: #2563eb; color: #fff; }
+
+.editButtons button:last-child { background: #4b5563; color: #fff; }

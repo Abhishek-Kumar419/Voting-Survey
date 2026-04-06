@@ -32,4 +32,6 @@ public interface PartysDao {
     boolean updateVotesDao(Long partyId, Long newVotes);
     
     int resetAllPartyVotesByConstituencyIdDao(Long constituencyId);
+
+    Party updatePartyDao(Party party);
 }

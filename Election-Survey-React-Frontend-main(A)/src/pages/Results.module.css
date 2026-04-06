@@ -1,0 +1,193 @@
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+}
+
+.pageTitle {
+    font-size: 28px;
+    font-weight: 900;
+    color: #f1f1f1;
+    margin-bottom: 32px;
+}
+
+.sectionTitle {
+    font-size: 18px;
+    font-weight: 800;
+    color: #f1f1f1;
+    margin-bottom: 16px;
+}
+
+/* Vote share */
+.voteShareSection {
+    background: #13131a;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 28px;
+}
+
+.voteShareBars { display: flex; flex-direction: column; gap: 12px; }
+
+.voteShareRow {
+    display: grid;
+    grid-template-columns: 60px 1fr 52px 90px;
+    align-items: center;
+    gap: 12px;
+}
+
+.vsParty { font-weight: 800; font-size: 15px; }
+
+.vsTrack {
+    height: 10px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.vsFill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s ease;
+    min-width: 4px;
+}
+
+.vsPct { font-weight: 800; font-size: 14px; text-align: right; }
+.vsVotes { font-size: 12px; color: #9ca3af; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Exit poll */
+.exitPollSection {
+    background: #13131a;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 28px;
+}
+
+.exitPollGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.exitCard {
+    background: #1c1c28;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-top: 3px solid;
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.exitParty { font-size: 18px; font-weight: 900; }
+
+.exitRow { display: flex; align-items: center; gap: 12px; }
+
+.exitCol { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+
+.exitNum { font-size: 28px; font-weight: 900; color: #f1f1f1; }
+
+.exitLabel { font-size: 10px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
+
+.exitDivider { width: 1px; height: 40px; background: rgba(255,255,255,0.1); }
+
+.swingUp      { font-size: 13px; font-weight: 800; color: #22c55e; }
+.swingDown    { font-size: 13px; font-weight: 800; color: #ef4444; }
+.swingNeutral { font-size: 13px; font-weight: 800; color: #9ca3af; }
+
+/* Constituency grid */
+.constituencyGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+}
+
+.cCard {
+    background: #13131a;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 16px 18px;
+}
+
+.cHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.cName { font-size: 14px; font-weight: 700; color: #f1f1f1; }
+
+.live   { font-size: 12px; color: #22c55e; font-weight: 700; }
+.closed { font-size: 12px; color: #ef4444; font-weight: 700; }
+
+.cBars { display: flex; flex-direction: column; gap: 8px; }
+
+.cBarRow {
+    display: grid;
+    grid-template-columns: 44px 1fr 40px;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.cBarRow:hover .cFill { opacity: 0.8; }
+
+.cParty { font-size: 12px; font-weight: 800; }
+
+.cTrack {
+    height: 7px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.cFill {
+    height: 100%;
+    border-radius: 7px;
+    transition: width 1s ease;
+    min-width: 3px;
+}
+
+.cPct { font-size: 11px; color: #9ca3af; text-align: right; font-weight: 700; }
+
+.cFooter {
+    margin-top: 10px;
+    font-size: 11px;
+    color: #6b7280;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.stateBox {
+    text-align: center;
+    padding: 60px 24px;
+    color: #9ca3af;
+    font-size: 16px;
+    background: #13131a;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+}
+
+.noDataBox {
+    padding: 32px 24px;
+    color: #9ca3af;
+    font-size: 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 12px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.noVotesYet {
+    font-size: 12px;
+    color: #4b5563;
+    text-align: center;
+    padding: 12px 0 4px;
+    font-style: italic;
+}

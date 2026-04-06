@@ -17,7 +17,7 @@ public interface PartyRepository extends JpaRepository<Party, Long> {
 	@Query("SELECT p FROM Party p WHERE p.constituency.name = :constituencyName")
     List<Party> findByConstituencyName(@Param("constituencyName") String constituencyName);
 	
-	@Query("SELECT p FROM Party p WHERE p.constituency.electionActive = true")
+	@Query("SELECT p FROM Party p JOIN FETCH p.constituency WHERE p.constituency.electionActive = true")
     List<Party> findByElectionActiveConstituency();
 	
 	@Modifying

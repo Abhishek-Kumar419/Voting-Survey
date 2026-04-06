@@ -62,4 +62,12 @@ public class PartyDao implements PartysDao {
 	public int resetAllPartyVotesByConstituencyIdDao(Long constituencyId) {
 		return repository.resetAllPartyVotesByConstituencyId(constituencyId);
 	}	
+
+	@Override
+	public Party updatePartyDao(Party party) {
+		if (party == null || party.getId() <= 0 || !repository.existsById(party.getId())) {
+			throw new RuntimeException("Party not found for update: " + (party == null ? null : party.getId()));
+		}
+		return repository.save(party);
+	}
 }

@@ -37,6 +37,8 @@ const Login = () => {
                 navigate("/adminDashbord");
             } else {
                 sessionStorage.setItem("voterId", response.data.voterId);
+                sessionStorage.setItem("token", response.data.token);
+                axios.defaults.headers.common["Authorization"] = `Bearer ${response.data.token}`;
                 navigate("/profile");
             }
         } catch (error) {
@@ -94,15 +96,17 @@ const Login = () => {
                             required
                         />
                     </div>
-                    <div className={styles.inputGroup}>
+                    <div className={styles.adminCheck} onClick={handleCheckboxChange}>
                         <input
                             type="checkbox"
                             id="adminCheck"
                             name="adminCheck"
                             checked={isAdmin}
                             onChange={handleCheckboxChange}
+                            onClick={e => e.stopPropagation()}
                         />
                         <label htmlFor="adminCheck">Login as Admin</label>
+                        <span className={styles.adminIcon}>🛡️</span>
                     </div>
                     <button type="submit" className="g-btn">Login</button>
                 </form>

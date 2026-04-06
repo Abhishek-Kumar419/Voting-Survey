@@ -35,5 +35,6 @@ public interface PartysService {
     
     String resetAllPartyVotesByConstituencyId(Long constituencyId);
     
+    Party updateParty(Party party);
     
 }

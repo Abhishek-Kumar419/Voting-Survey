@@ -1,8 +1,13 @@
-import {router} from './router/router'
-import { RouterProvider } from "react-router-dom"
+import { router } from './router/router';
+import { RouterProvider } from "react-router-dom";
+import { ElectionDataProvider } from "./context/ElectionDataContext";
 
 const App = () => {
-    return <RouterProvider router={router}/>
-}
+    return (
+        <ElectionDataProvider>
+            <RouterProvider router={router} />
+        </ElectionDataProvider>
+    );
+};
 
-export default App
+export default App;

@@ -233,3 +233,127 @@
 @media (max-width: 900px) {
     .grid2 { grid-template-columns: 1fr; }
 }
+
+/* ── Section headings ── */
+.sectionHeading {
+    font-size: 20px;
+    font-weight: 800;
+    color: #e2e2f0;
+    margin-bottom: 6px;
+}
+
+.sectionSub {
+    font-size: 13px;
+    color: #6666aa;
+    margin-bottom: 20px;
+}
+
+/* ── Phase management ── */
+.phaseGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.phaseCard {
+    background: #16162a;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.phaseHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.phaseLabel {
+    font-size: 16px;
+    font-weight: 800;
+    color: #a5b4fc;
+}
+
+.phaseCount {
+    font-size: 11px;
+    color: #6666aa;
+    background: rgba(255,255,255,0.05);
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.phaseIds {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.phaseId {
+    background: rgba(129,140,248,0.12);
+    color: #a5b4fc;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(129,140,248,0.2);
+}
+
+.phaseBtn {
+    background: rgba(129,140,248,0.15);
+    border: 1px solid rgba(129,140,248,0.3);
+    color: #a5b4fc;
+    padding: 9px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+}
+.phaseBtn:hover { background: rgba(129,140,248,0.25); }
+
+/* ── Audit log ── */
+.auditTable {
+    background: #16162a;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.auditRow {
+    display: grid;
+    grid-template-columns: 32px 1fr 90px;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background 0.15s;
+}
+
+.auditRow:last-child { border-bottom: none; }
+.auditRow:hover { background: rgba(255,255,255,0.03); }
+
+.auditIcon { font-size: 18px; text-align: center; }
+
+.auditAction {
+    font-size: 13px;
+    color: #c4c4e0;
+    font-weight: 500;
+}
+
+.auditTime {
+    font-size: 11px;
+    color: #6666aa;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.noAudit {
+    padding: 32px;
+    text-align: center;
+    color: #6666aa;
+    font-size: 14px;
+}
